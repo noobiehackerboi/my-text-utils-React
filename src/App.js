@@ -4,6 +4,7 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -33,12 +34,18 @@ function App() {
   }
   return (
     <>
-      <div style={{ minHeight: '100%', backgroundColor: mode === 'dark' ? '#121212' : 'white' }}>
-        <Navbar title="My TextUtils" mode={mode} toggleMode={toggleMode} />
-        <Alert alert={alert} />
-        <About mode={mode} />
-        <TextForm showAlert={showAlert} mode={mode} heading="Enter Text" />
-      </div>
+      <BrowserRouter>
+        <div style={{ backgroundColor: mode === 'dark' ? '#121212' : 'white' }}>
+          <Navbar title="My TextUtils" mode={mode} toggleMode={toggleMode} />
+          <Alert alert={alert} />
+          <Routes>
+            <Route path='/about' element={<About mode={mode} />}>
+            </Route>
+            <Route path='/' element={<TextForm showAlert={showAlert} mode={mode} heading="Enter Text" />}>
+            </Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }
