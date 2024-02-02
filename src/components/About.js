@@ -3,7 +3,7 @@ import React from 'react'
 export default function About(props) {
   return (
     <div className="container mt-4" data-bs-theme={props.mode} >
-      <h1 className="text-center" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>About Us</h1>
+      <h1 className="text-center mb-4" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">

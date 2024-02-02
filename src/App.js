@@ -4,6 +4,7 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
+import Footer from './components/Footer'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -33,20 +34,19 @@ function App() {
     }
   }
   return (
-    <>
+    <div style={{ minHeight: '100vh', backgroundColor: mode === 'dark' ? '#121212' : 'white' }}>
       <BrowserRouter>
-        <div style={{ backgroundColor: mode === 'dark' ? '#121212' : 'white' }}>
-          <Navbar title="My TextUtils" mode={mode} toggleMode={toggleMode} />
-          <Alert alert={alert} />
-          <Routes>
-            <Route path='/about' element={<About mode={mode} />}>
-            </Route>
-            <Route path='/' element={<TextForm showAlert={showAlert} mode={mode} heading="Enter Text" />}>
-            </Route>
-          </Routes>
-        </div>
+        <Navbar title="My TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <Routes>
+          <Route path='/about' element={<About mode={mode} />}>
+          </Route>
+          <Route path='/' element={<TextForm showAlert={showAlert} mode={mode} heading="Enter Text" />}>
+          </Route>
+        </Routes>
+        <Footer/>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
